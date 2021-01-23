@@ -1,0 +1,30 @@
+	<div class="container-login" id="particles-js" style="grid-template-rows:{{part_up_height}}px 248px {{part_up_height}}px">
+		<div class="empty"></div>
+		<!-- <div class="lgsect"> -->
+			<div class="login">
+				<div class="login-top">
+					登录
+				</div>
+				<div class="login-center clearfix">
+					<div class="login-center-img"><img src="assets/images/name.png"/></div>
+					<div class="login-center-input">
+						<input type="text"  #txtUserName [(ngModel)]="userName" placeholder="请输入您的用户名" onfocus="this.placeholder=''" onblur="this.placeholder='请输入您的用户名'"/>
+						<div class="login-center-input-text">用户名</div>
+					</div>
+				</div>
+				<div class="login-center clearfix">
+					<div class="login-center-img"><img src="assets/images/password.png"/></div>
+					<div class="login-center-input">
+						<input type="password"  [(ngModel)]="userPass" placeholder="请输入您的密码" onfocus="this.placeholder=''" onblur="this.placeholder='请输入您的密码'"/>
+						<div class="login-center-input-text">密码</div>
+					</div>
+				</div>
+				<div style="justify-self:center;align-self: center;">
+					<div class="login-button" (click)="login()">
+						登录
+					</div>
+				</div>
+			</div>
+		<!-- </div> -->
+		<div class="empty"></div>
+	</div>

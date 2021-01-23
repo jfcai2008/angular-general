@@ -1,0 +1,15 @@
+<div class="main">
+	<div class="up" [ngStyle]="upStyle">
+        <nz-tabset *ngIf="!!tabs" [(nzSelectedIndex)]="tabIndex">
+            <nz-tab *ngFor="let tab of tabs" [nzTitle]="titleTemplate" (nzClick)="tabClick()">
+                <ng-template #titleTemplate>
+                    <i class="iconfont  fz40" [ngClass]="tab.icon"></i> <p class="m-">{{ tab.title }}</p>
+                </ng-template>
+                {{ tab.title }}
+              </nz-tab>
+          </nz-tabset>
+	</div>
+	<div class="down"  [ngStyle]="downStyle" >
+		<ng-content></ng-content>
+	</div>
+</div>

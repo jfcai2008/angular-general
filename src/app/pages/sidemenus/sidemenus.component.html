@@ -1,0 +1,14 @@
+<ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed" class="menuFont">
+    <ng-container *ngFor="let item of menus">
+      <li nz-submenu nzOpen [nzTitle]="item.data.breadcrumb" nzIcon="dashboard" *ngIf="item.data.visible==true"
+        nzOpen='false'>
+        <ul>
+          <ng-container *ngFor="let child of item.data.menus">
+            <li nz-menu-item nzMatchRouter *ngIf="child.data.visible==true">
+              <a routerLink="/{{item.path}}/{{child.path}}" class="subMenuFont">{{child.data.breadcrumb}}</a>
+            </li>
+          </ng-container>
+        </ul>
+      </li>
+    </ng-container>
+  </ul>

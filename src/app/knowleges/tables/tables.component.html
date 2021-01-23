@@ -1,0 +1,16 @@
+<app-tabbedpage [tabs]="tabs" (tabHitted)="whenTabChanged($event)">
+	<div class="tab-main-content">
+		<div>{{tabs[currentTab].title}}台帐列表</div>
+
+		<div>
+			<table width='100%' cell-padding='1' cell-spacing='2'>
+				<tr *ngFor="let item of examples">
+					<td>{{item.title}}</td>
+					<td>{{item.icon}}</td>
+					<td>{{item.engName}}</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+</app-tabbedpage>

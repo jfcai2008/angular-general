@@ -1,7 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { MainRoutes } from './app.menu'
 
-const routes: Routes = [];
+const routes: Routes = [
+  ...MainRoutes
+ ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

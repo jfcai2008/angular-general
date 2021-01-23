@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+// import {MainRoutes} from './app.menu';
+// import {Config} from './app.config'
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'angular-general';
+  // menus:any = MainRoutes;
+  // isCollapsed = false;
+  constructor(){
+    // console.log(Config)
+  }
 }

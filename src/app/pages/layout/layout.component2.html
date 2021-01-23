@@ -1,0 +1,40 @@
+<nz-layout class="app-layout">
+    <nz-sider class="menu-sidebar" nzCollapsible nzWidth="256px" nzBreakpoint="md" [(nzCollapsed)]="isCollapsed"
+      [nzTrigger]="null">
+      <div class="sidebar-logo">
+        <a href="https://ng.ant.design/" target="_blank">
+          <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo">
+          <h1>Ant Design Of Angular</h1>
+        </a>
+      </div>
+      <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed" class="menuFont">
+        <ng-container *ngFor="let item of menus">
+          <li nz-submenu nzOpen [nzTitle]="item.data.breadcrumb" nzIcon="dashboard" *ngIf="item.data.visible==true"
+            nzOpen='false'>
+            <ul>
+              <ng-container *ngFor="let child of item.data.menus">
+                <li nz-menu-item nzMatchRouter *ngIf="child.data.visible==true">
+                  <a routerLink="/{{item.path}}/{{child.path}}" class="subMenuFont">{{child.data.breadcrumb}}</a>
+                </li>
+              </ng-container>
+            </ul>
+          </li>
+        </ng-container>
+      </ul>
+    </nz-sider>
+    <nz-layout>
+      <!-- <nz-header>
+        <div class="app-header">
+          <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+            <i class="trigger" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"></i>
+          </span>
+          <span>{{Config.appTitle}}</span>
+        </div>
+      </nz-header> -->
+      <nz-content>
+        <div class="inner-content">
+          <router-outlet></router-outlet>
+        </div>
+      </nz-content>
+    </nz-layout>
+  </nz-layout>

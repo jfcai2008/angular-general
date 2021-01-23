@@ -1,0 +1,258 @@
+// //空中居中对齐
+// //内容垂直居中
+// .g-c {
+//   display: grid;
+//   place-items: center;
+// }
+// //内容垂直居左
+// .g-c-l {
+//   display: grid;
+//   place-items: center left;
+// }
+// //内容垂直居右
+// .g-c-r {
+//   display: grid;
+//   place-items: center right;
+// }
+// //并列式布局
+// .f-c {
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-between;
+//   .item {
+//     flex: 0 1 auto;
+//   }
+// }
+// .f-l {
+//   display: flex;
+//   align-items: center;
+//   justify-content: flex-start;
+//   .item {
+//     flex: 0 1 auto;
+//   }
+// }
+// .f-r {
+//   display: flex;
+//   align-items: center;
+//   justify-content: flex-end;
+//   .item {
+//     flex: 0 1 auto;
+//   }
+// }
+
+// //两列式布局
+// .col-2 {
+//   display: grid;
+//   grid-template-columns: auto auto;
+//   justify-content: space-between;
+//   align-items: center;
+//   .item:nth-child(1) {
+//     justify-self: left;
+//     // padding-left: 16px;
+//   }
+//   .item:nth-child(2) {
+//     justify-self: right;
+//     // padding-right: 16px;
+//   }
+// }
+
+.layout {
+  display: grid;
+  grid-template: 56px 1fr / auto 1fr;
+
+}
+.layout2{
+  display: grid;
+  grid-template: 56px 1fr / 0 1fr;
+  &>*{
+    overflow: hidden;
+  }
+}
+//布局：居中
+.full{
+  display: grid;
+  // grid-template: 1fr / 1fr;
+  place-content: center;
+  // text-align: center;
+}
+
+//布局：元素分布在两端
+.in-side {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  justify-content: space-between;
+  align-items: center;
+  & > *:first-child {
+    justify-self: flex-start;
+  }
+  & > *:last-child {
+    justify-self: flex-end;
+  }
+}
+//元素：对齐
+.text-center{
+  text-align: center;
+}
+.text-left{
+  text-align: left;
+}
+.text-right{
+  text-align: right;
+}
+.pwh100{
+  width:100%;
+  height: 100%;
+}
+
+@for $i from 0 through 2000 {
+  .m#{$i} {
+    margin: ($i) + px;
+  }
+  .mt#{$i} {
+    margin-top: ($i) + px;
+  }
+  .mb#{$i} {
+    margin-bottom: ($i) + px;
+  }
+  .ml#{$i} {
+    margin-left: ($i) + px;
+  }
+  .mr#{$i} {
+    margin-right: ($i) + px;
+  }
+
+  .p#{$i} {
+    padding: ($i) + px;
+  }
+  .pt#{$i} {
+    padding-top: ($i) + px;
+  }
+  .pb#{$i} {
+    padding-bottom: ($i) + px;
+  }
+  .pl#{$i} {
+    padding-left: ($i) + px;
+  }
+  .pr#{$i} {
+    padding-right: ($i) + px;
+  }
+
+  .fz#{$i} {
+    font-size: ($i) + px;
+  }
+
+  .w#{$i} {
+    width: ($i) + px;
+  }
+  
+  .mw#{$i} {
+    min-width: ($i) + px;
+  }
+  .wv#{$i} {
+    width: ($i) + vw;
+  }
+  .mwv#{$i} {
+    min-width: ($i) + vw;
+  }
+  .h#{$i} {
+    height: ($i) + px;
+  }
+  .hv#{$i} {
+    height: ($i) + vh;
+  }
+  .lh#{$i} {
+    line-height: ($i) + px;
+  }
+  
+
+  //布局：元素在同一行自适应大小
+  .in-line-#{$i} {
+    display: grid;
+    grid-template-columns: repeat(($i), minmax(max-content, auto));
+    align-items: center;
+    justify-content: center;
+    // overflow: hidden;
+  }
+  //布局：元素自适应在盒子里
+  .in-box-#{$i} {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(max-content, ($i)));
+    place-content: space-evenly;
+    gap: 16px;
+    place-items: center;
+  }
+  .radius#{$i}{
+    border-radius:($i)+px;
+  }
+}
+
+$colors: (
+  "primary": #f44336,
+  "dark1": #d32f2f,
+  "dark": #BF1629,
+  "light": #ffcdd2,
+  "text": #ffffff,
+  "accent": #607d8b,
+  "textdark": #212121,
+  "textdark2": #757575,
+  "divider": #bdbdbd,
+  // "white": #fff,
+    // "light": #f9f9f9,
+    // "light-1": #d4d9de,
+    // "light-2":#a1d4e9,
+    // "black": #000,
+    // "dark": #222,
+    // "dark-1": #343440,
+    // "grey": #999,
+    // "grey-1": #666,
+    // "info": #4b67af,
+    "link":navy,//链接颜色
+    // "normal":#70B603,//任务正常
+    // "delay":#D9001B //任务超期
+    //   "black-1": #2f3638,
+    // "black-2": #282d2f,,,
+);
+
+@each $colorKey, $color in $colors {
+  .text-#{$colorKey} {
+    color: $color;
+  }
+  .bg-#{$colorKey} {
+    background-color: $color;
+  }
+  .hover-#{$colorKey} {
+    &:hover {
+      color: $color;
+    }
+  }
+  .hover-bg-#{$colorKey} {
+    &:hover {
+      background-color: $color;
+    }
+  }
+}
+.hover-btn {
+  @extend.hover-bg-dark,.lh56,.fz18,.pl16,.pr16;
+  cursor: pointer;
+}
+.hover-card1 {
+  @extend .hover-bg-textdark,.hover-text;
+  cursor: pointer;
+  &:hover{
+    i{
+      color: white;
+    }
+  }
+}
+.hover-card {
+  @extend .hover-textdark;
+  cursor: pointer;
+  transition: all 0.3s;
+  &:hover{
+    i{
+      color: black;
+      
+    }
+    transform: scale(1.1);
+  }
+}
