@@ -18,10 +18,6 @@ export class DataFetcherService {
     if (ln == '127.0.0.1' || ln == '192.168.3.158' || ln == 'localhost') {
       this.base_url = `http://${ln}:6002/`
     }
-    else if (ln == 'wmcp.vicp.net') {
-      //在花生壳上做的映射
-      this.base_url = "http://jfcai.wicp.net/"
-    }
     else {
       this.base_url = `http://${ln}:6002/`
     }
