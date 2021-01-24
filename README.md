@@ -4,18 +4,18 @@
 我的目的是为自己的以后项目做一个框架。
 提供如下功能：
 
-一、多路由  
+## 一、多路由  
 应用中各个不同的业务功能可以有自己不同的布局模板。  
 登录，错误处理有着自己的路由，自己的布局。  
 例子中的基金有自己的路由，自己的布局模板。  
 例子中的足球有自己的路由和自己的布局模板。  
 等等。
 
-二、实现了懒加载  
+## 二、实现了懒加载  
 基于业务功能的子路由实现了懒加载  
 懒加载的路由也能动态加入到菜单中。（见后面的实现方法）  
 
-三、基于业务功能创建模块  
+## 三、基于业务功能创建模块  
 假如我们的项目中包括订单，用户，商品，足球，基金  
 基于业务功能创建模块，  
 ng g m soccer --routing  
@@ -44,7 +44,7 @@ analysis
 ...  
 等目录，每个目录都包括该页面所需要的一系列文件。  
 
-四、多级路由生成  
+## 四、多级路由生成  
 ng g c soccerLayout --module=app.module  
 如上生成基于业务功能应用的布局组件。  
 注意，所有的布局组件都应加入到app.module.ts模块中。  
@@ -75,7 +75,7 @@ ng g c soccerLayout --module=app.module
     },  
 将使用LayoutsoccerComponent组件作为布局组件。  
 
-五、合作开发备注  
+## 五、合作开发备注  
 1.每成员可基于【三、基于业务功能创建模块】创建自己的模块和页面和组件。  
 2.将该业务功能模块中路由文件中的（已完成路由数组内容提取出来）生成一个***.menu.ts文件。  
     {  
@@ -98,7 +98,7 @@ ng g c soccerLayout --module=app.module
     },  
 3.将***.menu.ts引入到***.routing.ts文件中，并并入到routes变量，完成本模块的路由文件修改。  
 
-六、路由合并  
+## 六、路由合并  
 新建一个根下的app.menu.ts文件。  
 完成总菜单文件，其中可根据业务功能并入子菜单文件。如果业务功能子菜单要采用不同的  
 模板，请在此处指定。如  
@@ -141,7 +141,12 @@ const routes: Routes = [
 发现，我的知识库中用到了组件NzTabsModule  
 则必须在knowleges.module.ts中imports,在app.module.ts中imports无效。  
 
+## 七、路由守卫 
 
+![Image text](https://raw.githubusercontent.com/jfcai2008/angular-general/main/images/login.png)
+![Image text](https://raw.githubusercontent.com/jfcai2008/angular-general/main/images/home1.png)
+![Image text](https://raw.githubusercontent.com/jfcai2008/angular-general/main/images/home2.png)
+![Image text](https://raw.githubusercontent.com/jfcai2008/angular-general/main/images/home3.png)
 
 参考：https://www.cnblogs.com/huangenai/p/12191832.html  
 对功能模块的划分  
@@ -192,7 +197,7 @@ export class AppModule { }
 如果我们将所有的模块都导入根模块，那么应用在初始化加载的时候就会非常慢。这时候我们应该考虑使用惰性加载。根据需求加载相应都模块，减少应用初始化包的大小以及减少加载的时间，提高用户体验性。  
 
 惰性加载的模块特点是该模块拥有路由模块。so 接着上面我们创建了一个订单模块 我们给订单模块加上路由。并再创建一个user.module以及user.module模块下的list组件。  
------------------------------------------------------------------------------------
+
 7.共享模块  
 
 共享模块顾名思义，就是共享于所有的模块中。首先得定义好这个模块的具体功能特性，比如指令、管道和组件等分别封装成一个个模块，哪些业务模块需要使用到其里面的功能变导入其模块中便可。简单的比如，本系统的input 都是统一样式的，我们可以制作一个input 模块 然后在其他模块直接导入使用。这极大的规范了系统的统一性和降低了以后的维护成本。  
